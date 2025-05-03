@@ -1,0 +1,117 @@
+.fade-on-scroll,
+.animate-on-scroll{
+  opacity: 0;
+  will-change: scroll-position;
+}
+
+.stagger-on-scroll{
+  .stagger-child{
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: scroll-position;
+  }
+  &.animate{
+    .stagger-child{
+      animation-name: d;
+      animation-fill-mode: forwards;
+      transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+      animation-duration: 1s;
+      @include media-breakpoint-down(lg){
+        animation-duration: 0.8s;
+      }
+    }
+  }
+}
+
+.fade-on-scroll.animate {
+  animation-name: d;
+  animation-fill-mode: forwards;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  animation-duration: 1s;
+  @include media-breakpoint-down(lg){
+    animation-duration: 0.8s;
+  }
+}
+
+.animate-on-scroll.animate {
+  animation-name: a;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  @include media-breakpoint-down(lg){
+    animation-duration: 0.8s;
+  }
+}
+
+
+.line-container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  align-items: start;
+  display: none;
+  .overflow-wrapper{
+    overflow: hidden;
+    display: inline-block;
+    .line {
+      display: inline-flex;
+      white-space: nowrap;
+      color: $black;
+      transform: translateY(100%);
+      transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+      @include media-breakpoint-down(lg){
+        transition-duration: 0.8s;
+      }
+    }
+  }
+}
+
+.text-up{
+  display: inline-block;
+  position: relative;
+  width: 100%; 
+  color: transparent;
+  opacity: 0;
+  will-change: transform;
+  .line-container{
+    display: flex;
+  }
+  &.animate{
+    opacity: 1;
+    .line{
+      transform: translateY(0);
+    }
+  }
+}
+
+
+@keyframes a {
+  0% {
+    opacity: 0;
+    -webkit-backface-visibility: hidden;
+  }
+
+  to {
+    opacity: 1;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+@keyframes d {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    -webkit-backface-visibility: hidden;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+

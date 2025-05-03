@@ -1,0 +1,222 @@
+/* 
+ * Anagrama [root] 2021
+ * https://www.anagrama.com/
+ */
+
+/* ===== [ I.NDEX ] ======
+ * i. 1. Normalize
+ * i. 2. General
+ * i. 3. Pages
+ *    -- 3.1 Page Home
+ */
+
+ // i. 1. Normalize
+html{
+  font-size: 62.5%;
+  @extend %font-smoothing;
+  scroll-behavior: smooth;
+  background-color: $body-background-color;
+}
+body{
+  @extend %type-body;
+  @extend %font-smoothing;
+  background: $body-background-color;
+  color: $body-text-color;
+
+  @include body-text;
+}
+
+main {
+  opacity: 0;
+  min-height: 100vh;
+}
+.body-no-scroll{
+  overflow: hidden;
+}
+a:not([href]):not([tabindex]){
+  cursor: pointer;
+}
+
+// i. 2. General
+
+input {
+  appearance: none;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+
+
+// i. 3. Pages
+//  -- 3.1 Page Home
+
+// Account Page
+#newAddress,
+#mainAccount,
+.editAddress,
+#editAddress {
+  display: none;
+  &.show {
+    display: flex;
+  }
+}
+
+.order-item {
+  padding: 30px 0;
+  border-bottom: 1px solid $black;
+
+  &:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+.address-item {
+  padding: 30px 0;
+  border-bottom: 1px solid $black;
+}
+
+// Cart
+
+.product-item {
+  position: relative;
+  figure {
+    width: 100%;
+    max-width: 100px;
+    height: 100px;
+    margin-right: 30px;
+
+    @include media-breakpoint-up(lg) {
+      max-width: 135px;
+      height: 135px;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  }
+
+  .btn-remove {
+    position: absolute;
+    right: 0;
+    top: 25px;
+  }
+}
+
+.noise{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url('../img/noise.jpg');
+  mix-blend-mode: overlay;
+  background-repeat: repeat;
+  z-index: 10;
+}
+.circle {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 100%;
+  position: absolute;
+  background-color: #13D7E1;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  width: 60%;
+  @include media-breakpoint-up(md){
+    width: 45%;
+  }
+  @include media-breakpoint-up(lg){
+    width: 35%;
+  }
+  .circle-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    filter: blur(25px);
+
+    @include media-breakpoint-up(md){
+      filter: blur(50px);
+    }
+  }
+  
+  .circle-in-1, .circle-in-2, .circle-in-3 {
+    position: absolute;
+    bottom: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100%;
+    aspect-ratio: 1;
+  }
+
+  .circle-in-1 {
+    width: 50%;
+    background-color: #FF1919;
+    z-index: 3;
+  }
+
+  .circle-in-2 {
+    width: 80%;
+    background-color: #FFFF60;
+    z-index: 2;
+  }
+
+  .circle-in-3 {
+    width: 95%;
+    background-color: #9FFF9F;
+    z-index: 1;
+  }
+
+}
+
+.circle-template{
+  display: none;
+}
+
+.container-blur{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.blur-back{
+  width: 100%;
+  backdrop-filter: blur(40px);
+  background-color: rgba(#858282, 0.6);
+  border-radius: 30px;
+  overflow: hidden;
+  color: $white;
+  padding: 30px;
+  pointer-events: all;
+  user-select: none;
+  .swiper-pagination{
+    position: static;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    .swiper-pagination-bullet{
+      background-color: $white;
+    }
+  }
+}
+.logos-out{
+  padding-bottom: 30px;
+  width: 100%;
+}
+
+.logos-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 100%;
+}

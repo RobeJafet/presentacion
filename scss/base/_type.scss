@@ -1,0 +1,31 @@
+// stylelint-disable declaration-no-important, selector-list-comma-newline-after
+
+//
+// Headings
+//
+
+@mixin h1 {
+  font-family: 'Tiny 5x3 140';
+  letter-spacing: normal;
+  line-height: normal;
+  font-size: 36px;
+  font-weight: 140;
+}
+h1, .h1 { @include h1; }
+
+@mixin h2 {
+  font-family: 'Tiny 5x3 120';
+  letter-spacing: normal;
+  line-height: normal;
+  font-size: 22px;
+  font-weight: 120;
+}
+h2, .h2 { @include h2; }
+
+@mixin body-text{
+  font-family: 'Suisse Mono';
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.05em;
+}
+
